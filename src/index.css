@@ -1,0 +1,340 @@
+/* ==========================================================================
+   STRINGXPERT — CENTRALIZED THEME TOKENS SYSTEM
+   ========================================================================== */
+
+:root,
+[data-theme="obsidian-cyan"] {
+  /* Foundation colors */
+  --bg-black: #06080A;
+  --bg-charcoal: #0F1216;
+  --bg-navy: #0A1118;
+  --surface-card: rgba(16, 21, 30, 0.85);
+  --surface-inset: rgba(6, 9, 14, 0.75);
+  
+  /* Text colors */
+  --text-primary: #F8F9FA;
+  --text-secondary: #9BA3AF;
+  --text-muted: #5E6A78;
+  
+  /* Accents */
+  --accent-cyan: #00E5FF;
+  --accent-blue: #0A84FF;
+  --accent-cyan-glow: rgba(0, 229, 255, 0.18);
+  
+  /* Borders */
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 229, 255, 0.35);
+  
+  /* Glass */
+  --glass-bg: rgba(15, 18, 22, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+
+  /* Match Highlights */
+  --match-highlight-bg: rgba(0, 229, 255, 0.16);
+  --match-highlight-border: rgba(0, 229, 255, 0.5);
+
+  /* Buttons */
+  --btn-accent-bg: #0A84FF;
+  --btn-accent-hover: #1a8fff;
+  --btn-accent-shadow: rgba(10, 132, 255, 0.3);
+
+  /* Typography */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ==========================================================================
+   THEME 02 — MIDNIGHT VIOLET
+   ========================================================================== */
+[data-theme="midnight-violet"] {
+  --bg-black: #080A14;
+  --bg-charcoal: #0F1322;
+  --bg-navy: #0C101F;
+  --surface-card: rgba(18, 23, 38, 0.88);
+  --surface-inset: rgba(10, 13, 24, 0.8);
+  
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #818CF8;
+  
+  --accent-cyan: #C084FC;
+  --accent-blue: #818CF8;
+  --accent-cyan-glow: rgba(192, 132, 252, 0.22);
+  
+  --border-light: rgba(192, 132, 252, 0.12);
+  --border-active: rgba(192, 132, 252, 0.4);
+  
+  --glass-bg: rgba(15, 19, 34, 0.7);
+  --glass-border: rgba(192, 132, 252, 0.12);
+  --glass-shadow: 0 16px 40px rgba(5, 7, 18, 0.6);
+
+  --match-highlight-bg: rgba(192, 132, 252, 0.18);
+  --match-highlight-border: rgba(192, 132, 252, 0.6);
+
+  --btn-accent-bg: #8B5CF6;
+  --btn-accent-hover: #9333EA;
+  --btn-accent-shadow: rgba(139, 92, 246, 0.35);
+}
+
+/* ==========================================================================
+   THEME 03 — GRAPHITE EMERALD
+   ========================================================================== */
+[data-theme="graphite-emerald"] {
+  --bg-black: #060B08;
+  --bg-charcoal: #0D1510;
+  --bg-navy: #09120C;
+  --surface-card: rgba(14, 24, 18, 0.88);
+  --surface-inset: rgba(8, 15, 10, 0.8);
+  
+  --text-primary: #F0FDF4;
+  --text-secondary: #A7F3D0;
+  --text-muted: #6EE7B7;
+  
+  --accent-cyan: #10B981;
+  --accent-blue: #059669;
+  --accent-cyan-glow: rgba(16, 185, 129, 0.22);
+  
+  --border-light: rgba(16, 185, 129, 0.12);
+  --border-active: rgba(16, 185, 129, 0.4);
+  
+  --glass-bg: rgba(13, 21, 16, 0.7);
+  --glass-border: rgba(16, 185, 129, 0.12);
+  --glass-shadow: 0 16px 40px rgba(3, 8, 5, 0.6);
+
+  --match-highlight-bg: rgba(16, 185, 129, 0.18);
+  --match-highlight-border: rgba(16, 185, 129, 0.6);
+
+  --btn-accent-bg: #059669;
+  --btn-accent-hover: #10B981;
+  --btn-accent-shadow: rgba(5, 150, 105, 0.35);
+}
+
+/* ==========================================================================
+   THEME 04 — ARCTIC SAPPHIRE (LIGHT THEME)
+   ========================================================================== */
+[data-theme="arctic-sapphire"] {
+  --bg-black: #F8FAFC;
+  --bg-charcoal: #F1F5F9;
+  --bg-navy: #E2E8F0;
+  --surface-card: rgba(255, 255, 255, 0.95);
+  --surface-inset: rgba(241, 245, 249, 0.9);
+  
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  
+  --accent-cyan: #0284C7;
+  --accent-blue: #2563EB;
+  --accent-cyan-glow: rgba(2, 132, 199, 0.18);
+  
+  --border-light: rgba(15, 23, 42, 0.1);
+  --border-active: rgba(2, 132, 199, 0.45);
+  
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(15, 23, 42, 0.1);
+  --glass-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+
+  --match-highlight-bg: rgba(2, 132, 199, 0.14);
+  --match-highlight-border: rgba(2, 132, 199, 0.5);
+
+  --btn-accent-bg: #2563EB;
+  --btn-accent-hover: #1D4ED8;
+  --btn-accent-shadow: rgba(37, 99, 235, 0.25);
+}
+
+/* Semantic Status Colors (Consistent across all themes) */
+:root {
+  --status-green: #10B981;
+  --status-green-bg: rgba(16, 185, 129, 0.12);
+  --status-amber: #F59E0B;
+  --status-amber-bg: rgba(245, 158, 11, 0.12);
+  --status-red: #EF4444;
+  --status-red-bg: rgba(239, 68, 68, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Smooth Theme Transitions */
+body, 
+.glass-panel, 
+.target-document-panel, 
+.reference-manager-panel, 
+.compare-summary-bar, 
+.diff-pane, 
+.reports-page, 
+.report-preview-container, 
+.perf-page, 
+.lab-workspace-grid,
+.top-navbar,
+.modal-container,
+.evidence-card,
+.stat-box {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+body {
+  background-color: var(--bg-black);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: var(--glass-shadow);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--text-primary) 0%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 64px; /* Space for fixed header */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-cyan);
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+/* Utility Semantic Colors */
+.text-cyan { color: var(--accent-cyan) !important; }
+.text-green { color: var(--status-green) !important; }
+.text-amber { color: var(--status-amber) !important; }
+.text-red { color: var(--status-red) !important; }
+.text-primary { color: var(--text-primary) !important; }
+.text-secondary { color: var(--text-secondary) !important; }
+.text-muted { color: var(--text-muted) !important; }
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--text-primary);
+  color: var(--bg-black);
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+}
+
+.btn-secondary:hover {
+  border-color: var(--border-active);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.btn-accent {
+  background-color: var(--btn-accent-bg);
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px var(--btn-accent-shadow);
+}
+
+.btn-accent:hover {
+  background-color: var(--btn-accent-hover);
+  box-shadow: 0 6px 20px var(--btn-accent-shadow);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body, 
+  .glass-panel, 
+  .target-document-panel, 
+  .reference-manager-panel, 
+  .compare-summary-bar, 
+  .diff-pane, 
+  .reports-page, 
+  .report-preview-container, 
+  .perf-page, 
+  .lab-workspace-grid {
+    transition: none !important;
+  }
+}
