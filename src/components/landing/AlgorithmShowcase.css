@@ -1,0 +1,165 @@
+.algorithm-showcase {
+  padding: 8rem 2rem;
+  background-color: var(--bg-black);
+  position: relative;
+}
+
+.showcase-header {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--text-primary);
+}
+
+.showcase-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.showcase-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 6rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 900px) {
+  .showcase-flow {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.flow-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--text-muted);
+  border: 2px solid var(--bg-black);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.flow-step:hover .flow-dot {
+  background-color: var(--text-primary);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.flow-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.flow-step.highlight .flow-dot {
+  background-color: var(--accent-cyan);
+  box-shadow: 0 0 15px var(--accent-cyan-glow);
+}
+
+.flow-step.highlight .flow-label {
+  color: var(--accent-cyan);
+}
+
+.flow-line {
+  flex: 1;
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+  margin: 10px 0;
+}
+
+@media (min-width: 900px) {
+  .flow-line {
+    width: auto;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+    margin: 0 -20px;
+    transform: translateY(-16px);
+  }
+}
+
+.algorithms-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .algorithms-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .algorithms-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.algo-card {
+  padding: 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.algo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background-color: var(--accent-cyan);
+  transition: height 0.3s ease;
+}
+
+.algo-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.algo-card:hover::before {
+  height: 100%;
+}
+
+.algo-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.algo-name {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.algo-complexity {
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  background: rgba(0, 229, 255, 0.05);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.algo-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}

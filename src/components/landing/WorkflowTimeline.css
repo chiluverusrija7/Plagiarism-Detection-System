@@ -1,0 +1,120 @@
+.workflow-section {
+  padding: 8rem 2rem;
+  background-color: var(--bg-black);
+}
+
+.workflow-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.timeline-wrapper {
+  position: relative;
+  overflow-x: auto;
+  padding-bottom: 2rem;
+}
+
+/* Scrollbar styling for workflow */
+.timeline-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+.timeline-wrapper::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+}
+
+.timeline-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-connector {
+  position: absolute;
+  top: 0;
+  left: 20px; /* Align with numbers */
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--border-light) 0%, var(--accent-cyan) 50%, var(--border-light) 100%);
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .timeline-steps {
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: max-content;
+    padding: 0 1rem;
+  }
+  
+  .timeline-connector {
+    top: 24px;
+    left: 2rem;
+    width: calc(100% - 4rem);
+    height: 2px;
+    background: linear-gradient(to right, var(--border-light) 0%, var(--accent-cyan) 50%, var(--border-light) 100%);
+  }
+}
+
+.timeline-step {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .timeline-step {
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+  }
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background-color: var(--bg-charcoal);
+  border: 1px solid var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan-glow);
+  z-index: 2;
+}
+
+.step-content {
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+  flex: 1;
+}
+
+@media (min-width: 1024px) {
+  .step-content {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.step-content:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.step-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.step-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
