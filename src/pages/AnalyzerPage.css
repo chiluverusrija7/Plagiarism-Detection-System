@@ -1,0 +1,869 @@
+/* ==========================================================================
+   STRINGXPERT ANALYSIS WORKSPACE — PREMIUM DESIGN SYSTEM
+   ========================================================================== */
+
+.analyzer-page {
+  padding: 2rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  min-height: calc(100vh - 64px);
+  position: relative;
+}
+
+/* Layered Atmosphere Radial Glow */
+.analyzer-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 400px;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==========================================================================
+   1. PAGE HEADER & STATUS STRIP
+   ========================================================================== */
+
+.analyzer-header-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.header-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.analyzer-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  letter-spacing: 0.12em;
+}
+
+.analyzer-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.analyzer-desc {
+  margin: 0;
+  max-width: 620px;
+  line-height: 1.5;
+}
+
+.header-right-col {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.status-pill.ready-pill {
+  background: rgba(160, 232, 175, 0.12);
+  color: #A0E8AF;
+  border: 1px solid rgba(160, 232, 175, 0.25);
+}
+
+.status-pill.pending-pill {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-run-btn {
+  padding: 0.55rem 1.25rem;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* ==========================================================================
+   2. MAIN WORKSPACE 65% / 35% GRID
+   ========================================================================== */
+
+.workspace-main-grid {
+  display: grid;
+  grid-template-columns: 1.85fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Left: Target Document Panel */
+.target-document-panel {
+  display: flex;
+  flex-direction: column;
+  background: rgba(12, 16, 24, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  min-height: 480px;
+}
+
+.editor-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.editor-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.editor-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: 0.06em;
+}
+
+.editor-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.editor-metric-chips {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.metric-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.2rem 0.45rem;
+  border-radius: 3px;
+  color: var(--text-muted);
+  font-size: 0.65rem;
+}
+
+.action-buttons-group {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.toolbar-action-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  padding: 0.25rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toolbar-action-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+/* Forensic Line-Numbered Editor Viewport */
+.forensic-editor-viewport {
+  flex: 1;
+  display: flex;
+  background: rgba(8, 11, 17, 0.85);
+  position: relative;
+  min-height: 380px;
+}
+
+.editor-line-gutter {
+  width: 44px;
+  padding: 1.25rem 0;
+  background: rgba(0, 0, 0, 0.25);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.gutter-line-number {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.forensic-textarea {
+  flex: 1;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 24px;
+  padding: 1.25rem 1.25rem;
+  resize: none;
+  outline: none;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.forensic-textarea:focus {
+  background: rgba(0, 229, 255, 0.01);
+}
+
+.editor-footer-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(10, 14, 22, 0.9);
+}
+
+.doc-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ==========================================================================
+   3. REFERENCE MATERIAL MANAGER (RIGHT ~35%)
+   ========================================================================== */
+
+.reference-manager-panel {
+  display: flex;
+  flex-direction: column;
+  background: rgba(12, 16, 24, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  min-height: 480px;
+}
+
+.reference-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ref-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ref-panel-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: 0.06em;
+}
+
+.ref-count-badge {
+  background: rgba(0, 229, 255, 0.1);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+}
+
+.add-ref-btn {
+  font-size: 0.75rem;
+  padding: 0.35rem 0.75rem;
+}
+
+.ref-panel-subheader {
+  padding: 0.6rem 1.25rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.reference-items-container {
+  flex: 1;
+  padding: 1.25rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reference Cards */
+.ref-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.reference-card {
+  background: rgba(8, 11, 17, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reference-card:hover {
+  border-color: rgba(0, 229, 255, 0.3);
+  background: rgba(10, 15, 24, 0.85);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.ref-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ref-id-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.ref-name-title {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ref-card-metrics {
+  display: flex;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+}
+
+.ref-preview-snippet {
+  line-height: 1.4;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border-left: 2px solid rgba(0, 229, 255, 0.3);
+}
+
+.ref-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.card-action-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  padding: 0.25rem 0.55rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-secondary);
+}
+
+.card-action-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+.card-action-btn.delete-btn:hover {
+  background: rgba(245, 66, 96, 0.15);
+  border-color: rgba(245, 66, 96, 0.3);
+  color: #F54260;
+}
+
+/* Reference Empty State */
+.ref-empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.converging-docs-icon {
+  margin-bottom: 1rem;
+  background: rgba(0, 229, 255, 0.06);
+  padding: 1.25rem;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 229, 255, 0.25);
+}
+
+.empty-state-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--text-primary);
+}
+
+.empty-state-desc {
+  max-width: 280px;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   4. ANALYSIS CONFIGURATION BAR
+   ========================================================================== */
+
+.analysis-config-panel {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: rgba(12, 16, 24, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+.config-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.config-title {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+}
+
+.config-options-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.config-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.config-toggle-btn {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  padding: 0.35rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.config-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.config-toggle-btn.active {
+  background: rgba(0, 229, 255, 0.1);
+  border-color: rgba(0, 229, 255, 0.3);
+  color: var(--accent-cyan);
+}
+
+.segmented-suite-toggle {
+  display: flex;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.suite-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.suite-btn.active {
+  background: rgba(0, 229, 255, 0.15);
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   5. READINESS & PRIMARY ACTION BAR
+   ========================================================================== */
+
+.analysis-readiness-bar {
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(12, 18, 28, 0.85);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.06);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.readiness-status-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.status-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.connector-arrow {
+  opacity: 0.4;
+}
+
+.primary-run-analysis-btn {
+  padding: 0.7rem 1.75rem;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   6. MODALS & OVERLAYS
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(4, 7, 12, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.modal-container {
+  width: 100%;
+  max-width: 580px;
+  background: rgba(12, 18, 26, 0.95);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  overflow: hidden;
+  animation: modalIn 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes modalIn {
+  0% { opacity: 0; transform: scale(0.96) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.modal-close-btn:hover {
+  color: var(--text-primary);
+}
+
+.modal-mode-tabs {
+  display: flex;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.modal-tab {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-tab.active {
+  color: var(--accent-cyan);
+  border-bottom-color: var(--accent-cyan);
+  background: rgba(0, 229, 255, 0.05);
+}
+
+.modal-form-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.modal-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 0.6rem 0.85rem;
+  color: var(--text-primary);
+  outline: none;
+}
+
+.modal-input:focus, .modal-textarea:focus {
+  border-color: var(--accent-cyan);
+}
+
+.modal-textarea {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 0.75rem 0.85rem;
+  color: var(--text-primary);
+  resize: vertical;
+  outline: none;
+  line-height: 1.4;
+}
+
+.modal-dropzone {
+  border: 2px dashed rgba(0, 229, 255, 0.3);
+  background: rgba(0, 229, 255, 0.02);
+  border-radius: 6px;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-dropzone:hover {
+  background: rgba(0, 229, 255, 0.06);
+  border-color: var(--accent-cyan);
+}
+
+.modal-actions-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+/* View Reference Modal */
+.view-ref-modal {
+  max-width: 680px;
+}
+
+.modal-meta-strip {
+  padding: 0.65rem 1.5rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  gap: 0.6rem;
+}
+
+.reference-content-viewer {
+  padding: 1.25rem 1.5rem;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.viewer-pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Analysis Progress Modal */
+.progress-modal {
+  max-width: 520px;
+}
+
+.progress-pipeline-box {
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.pipeline-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.pipeline-stage-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.pipeline-stage-row.passed {
+  background: rgba(160, 232, 175, 0.08);
+}
+
+.pipeline-stage-row.current {
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.pipeline-stage-row.pending {
+  opacity: 0.4;
+}
+
+.stage-text-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.preview-indicator-bar {
+  padding: 0.65rem 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.7rem;
+}
+
+.primary-results-btn {
+  padding: 0.6rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ==========================================================================
+   7. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .workspace-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analyzer-header-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-right-col {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .analyzer-page {
+    padding: 1.25rem 1rem;
+  }
+
+  .analyzer-title {
+    font-size: 1.75rem;
+  }
+
+  .editor-panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .editor-toolbar-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .analysis-readiness-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primary-run-analysis-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,457 @@
+/* ==========================================================================
+   STRINGXPERT COMPARE PAGE — THEME-AWARE FORENSIC STYLES
+   ========================================================================== */
+
+.compare-page {
+  padding: 2rem;
+  max-width: 1560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-height: calc(100vh - 64px);
+  position: relative;
+}
+
+/* Layered Background Motif */
+.compare-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 400px;
+  background: radial-gradient(circle at 50% 0%, var(--accent-cyan-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 1. Header */
+.compare-header-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.compare-eyebrow {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--accent-cyan-glow);
+  color: var(--accent-cyan);
+  border: 1px solid var(--border-active);
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+}
+
+.live-status-pill .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--accent-cyan);
+}
+
+.compare-main-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0.2rem 0;
+  letter-spacing: -0.02em;
+}
+
+.export-evidence-btn {
+  padding: 0.5rem 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* 2. Top Summary Instrument Bar */
+.compare-summary-instrument-bar {
+  padding: 1rem 1.5rem;
+  background: var(--surface-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+}
+
+.instrument-metric-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.instrument-metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 140px;
+}
+
+.metric-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.metric-val {
+  font-size: 1.6rem;
+  line-height: 1.1;
+}
+
+.metric-sub {
+  font-size: 0.75rem;
+}
+
+.instrument-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border-light);
+}
+
+/* 3. Toolbar & Match Stepper */
+.compare-toolbar-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  background: var(--surface-card);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+}
+
+.toolbar-left-group, .toolbar-right-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.toolbar-toggle-btn, .toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--border-light);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.toolbar-toggle-btn:hover, .toolbar-btn:hover {
+  background: var(--border-active);
+  color: var(--text-primary);
+}
+
+.toolbar-toggle-btn.is-active {
+  background: var(--accent-cyan-glow);
+  border-color: var(--border-active);
+  color: var(--accent-cyan);
+}
+
+.reference-switcher-group {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: 0.5rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--border-light);
+}
+
+.switcher-tabs {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.ref-tab-btn {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.65rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.ref-tab-btn.is-active {
+  background: var(--status-amber-bg);
+  border-color: var(--status-amber);
+  color: var(--status-amber);
+}
+
+.match-stepper-box {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--surface-inset);
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+}
+
+.stepper-nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 0.25rem 0.4rem;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.stepper-nav-btn:hover:not(:disabled) {
+  background: var(--border-light);
+  color: var(--text-primary);
+}
+
+.stepper-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.stepper-counter {
+  padding: 0 0.5rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+/* 4. Dual Workspace Grid */
+.compare-workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  height: 480px;
+}
+
+.document-pane-container {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.document-pane-container.target-pane {
+  border-top: 3px solid var(--accent-cyan);
+}
+
+.document-pane-container.reference-pane {
+  border-top: 3px solid var(--status-amber);
+}
+
+.document-pane-container.is-focused-pane {
+  grid-column: 1 / -1;
+  height: 600px;
+}
+
+.pane-header-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background: var(--surface-card);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.pane-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pane-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.target-badge { color: var(--accent-cyan); }
+.reference-badge { color: var(--status-amber); }
+
+.pane-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pane-icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.pane-icon-btn:hover {
+  background: var(--border-light);
+  color: var(--text-primary);
+}
+
+.pane-reading-surface {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  background: var(--surface-inset);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+}
+
+.span-unmatched {
+  color: var(--text-secondary);
+}
+
+.compare-match-mark {
+  padding: 0.15rem 0.35rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline;
+  position: relative;
+}
+
+.compare-match-mark.match-strong {
+  background: var(--status-red-bg);
+  color: var(--status-red);
+  border-bottom: 2px solid var(--status-red);
+}
+
+.compare-match-mark.match-moderate {
+  background: var(--status-amber-bg);
+  color: var(--status-amber);
+  border-bottom: 2px solid var(--status-amber);
+}
+
+.compare-match-mark.match-possible {
+  background: var(--accent-cyan-glow);
+  color: var(--accent-cyan);
+  border-bottom: 2px solid var(--accent-cyan);
+}
+
+.compare-match-mark.is-active-match {
+  outline: 2px solid var(--accent-cyan);
+  background: var(--match-highlight-bg) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 0 14px var(--accent-cyan-glow);
+}
+
+.match-num-tag {
+  font-size: 0.6rem;
+  background: var(--surface-inset);
+  padding: 0.1rem 0.3rem;
+  border-radius: 2px;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+  border: 1px solid var(--border-light);
+}
+
+/* 5. Forensic Evidence Inspector */
+.compare-inspector-bar {
+  padding: 1.25rem 1.5rem;
+  background: var(--surface-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.inspector-top-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.inspector-type-badge {
+  font-size: 0.65rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  border: 1px solid;
+  font-weight: 700;
+}
+
+.inspector-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.inspector-metric-box {
+  background: var(--surface-inset);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 0.6rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.algo-tag {
+  background: var(--border-light);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  border: 1px solid var(--border-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Empty State */
+.empty-compare-card {
+  margin: 3rem auto;
+  max-width: 550px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .compare-workspace-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .document-pane-container {
+    height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .compare-page {
+    padding: 1.25rem 1rem;
+  }
+  .instrument-metric-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .instrument-divider {
+    display: none;
+  }
+}
