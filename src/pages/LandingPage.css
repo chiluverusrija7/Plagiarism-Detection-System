@@ -2,23 +2,33 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .landing-footer {
   border-top: 1px solid var(--border-light);
-  padding: 4rem 2rem;
-  margin-top: 4rem;
+  padding: 4.5rem 2rem;
+  margin-top: 2rem;
   background-color: var(--bg-black);
+  position: relative;
+  z-index: 2;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .footer-brand {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.5rem;
+  font-weight: 800;
+  font-size: 1.6rem;
   letter-spacing: -0.03em;
+  color: var(--text-primary);
 }

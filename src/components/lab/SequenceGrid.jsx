@@ -16,7 +16,7 @@ export default function SequenceGrid({ text, pattern, step, algorithm }) {
   return (
     <div className="sequence-track-workspace">
       {/* 1. TEXT SEQUENCE TRACK */}
-      <div className="track-container text-track">
+      <div className="track-container text-track depth-rail-layer">
         <div className="track-label-bar">
           <span className="track-label mono">TARGET TEXT (T)</span>
           <span className="track-meta mono text-xs text-muted">{text.length} characters</span>
@@ -40,7 +40,10 @@ export default function SequenceGrid({ text, pattern, step, algorithm }) {
               return (
                 <div key={`t-${idx}`} className={`char-cell-wrapper ${cellStatus}`}>
                   <span className="cell-index mono">{String(idx).padStart(2, '0')}</span>
-                  <div className="char-box mono">{char}</div>
+                  <div className="char-box mono">
+                    <span className="char-box-inner">{char}</span>
+                    <span className="char-cell-shadow" aria-hidden="true"></span>
+                  </div>
                   {isCurrent && <div className="active-pointer">▲</div>}
                 </div>
               );
@@ -51,7 +54,7 @@ export default function SequenceGrid({ text, pattern, step, algorithm }) {
 
       {/* 2. PHYSICAL PATTERN ALIGNMENT TRACK (For pattern-based algorithms) */}
       {isPatternAlgo && patChars.length > 0 && (
-        <div className="track-container pattern-track">
+        <div className="track-container pattern-track depth-rail-layer">
           <div className="track-label-bar">
             <span className="track-label mono">PATTERN WINDOW (P)</span>
             <span className="track-meta mono text-xs text-muted">
@@ -84,7 +87,10 @@ export default function SequenceGrid({ text, pattern, step, algorithm }) {
                   return (
                     <div key={`p-${idx}`} className={`char-cell-wrapper pattern-cell ${cellStatus}`}>
                       <span className="cell-index mono">{String(idx).padStart(2, '0')}</span>
-                      <div className="char-box mono">{char}</div>
+                      <div className="char-box mono">
+                        <span className="char-box-inner">{char}</span>
+                        <span className="char-cell-shadow" aria-hidden="true"></span>
+                      </div>
                       {isCurrent && <div className="active-pointer-top">▼</div>}
                     </div>
                   );

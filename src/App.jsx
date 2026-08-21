@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import TopNavbar from './components/layout/TopNavbar';
+import CustomCursor from './components/common/CustomCursor';
 import LandingPage from './pages/LandingPage';
 import AnalyzerPage from './pages/AnalyzerPage';
 import ComparePage from './pages/ComparePage';
@@ -15,6 +16,7 @@ function App() {
     <ThemeProvider>
       <AnalysisProvider>
         <div className="app-container">
+          <CustomCursor />
           <TopNavbar />
           <main className="main-content">
             <Routes>

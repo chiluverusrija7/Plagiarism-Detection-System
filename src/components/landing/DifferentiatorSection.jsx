@@ -1,17 +1,39 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Search, MapPin, FileCheck, ArrowDown, Layers, CheckCircle2 } from 'lucide-react';
+import { Search, MapPin, FileCheck, ArrowDown, CheckCircle2 } from 'lucide-react';
 import './DifferentiatorSection.css';
 
 export default function DifferentiatorSection() {
   const [activeStage, setActiveStage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
+  const userScrolledRef = useRef(false);
 
-  // Looping signal animation travelling down the pipeline (Stage 0 -> Stage 1 -> Stage 2)
+  // Scroll-linked evidence pipeline progression
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight || 800;
+
+      if (rect.top <= windowHeight * 0.75 && rect.bottom >= windowHeight * 0.25) {
+        userScrolledRef.current = true;
+        const scrollFraction = (windowHeight * 0.75 - rect.top) / (rect.height + windowHeight * 0.5);
+        const stage = Math.min(2, Math.max(0, Math.floor(scrollFraction * 3)));
+        setActiveStage(stage);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Graceful fallback auto-cycling when stationary
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveStage(prev => (prev + 1) % 3);
-    }, 2800);
+      if (!userScrolledRef.current) {
+        setActiveStage(prev => (prev + 1) % 3);
+      }
+    }, 3200);
     return () => clearInterval(timer);
   }, []);
 
@@ -23,7 +45,7 @@ export default function DifferentiatorSection() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
 
     if (sectionRef.current) {

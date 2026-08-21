@@ -1,17 +1,72 @@
+/* ==========================================================================
+   WORKFLOW TIMELINE — 3D SPATIAL PIPELINE
+   ========================================================================== */
+
 .workflow-section {
-  padding: 8rem 2rem;
+  padding: 8.5rem 2rem;
   background-color: var(--bg-black);
+  position: relative;
+  overflow: hidden;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.workflow-glow-bg {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 450px;
+  background: radial-gradient(ellipse at center, rgba(0, 229, 255, 0.035) 0%, rgba(74, 144, 226, 0.015) 50%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .workflow-container {
   max-width: 1400px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+.workflow-header {
+  text-align: center;
+  margin-bottom: 5.5rem;
+  opacity: 0;
+  transform: translateY(20px) translateZ(-10px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.workflow-section.is-revealed .workflow-header {
+  opacity: 1;
+  transform: translateY(0) translateZ(0);
+}
+
+.workflow-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+}
+
+.workflow-eyebrow .eyebrow-pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 8px var(--accent-cyan);
 }
 
 .timeline-wrapper {
   position: relative;
   overflow-x: auto;
   padding-bottom: 2rem;
+  transform-style: preserve-3d;
 }
 
 /* Scrollbar styling for workflow */
@@ -20,6 +75,7 @@
 }
 .timeline-wrapper::-webkit-scrollbar-thumb {
   background: var(--border-light);
+  border-radius: 2px;
 }
 
 .timeline-steps {
@@ -28,15 +84,16 @@
   gap: 2rem;
   position: relative;
   z-index: 2;
+  transform-style: preserve-3d;
 }
 
 .timeline-connector {
   position: absolute;
   top: 0;
-  left: 20px; /* Align with numbers */
+  left: 20px;
   width: 2px;
   height: 100%;
-  background: linear-gradient(to bottom, var(--border-light) 0%, var(--accent-cyan) 50%, var(--border-light) 100%);
+  background: rgba(255, 255, 255, 0.08);
   z-index: 1;
 }
 
@@ -53,8 +110,18 @@
     left: 2rem;
     width: calc(100% - 4rem);
     height: 2px;
-    background: linear-gradient(to right, var(--border-light) 0%, var(--accent-cyan) 50%, var(--border-light) 100%);
+    background: rgba(255, 255, 255, 0.08);
   }
+}
+
+.timeline-connector-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-cyan) 0%, #00B4D8 100%);
+  box-shadow: 0 0 10px var(--accent-cyan);
+  transition: width 0.4s ease;
 }
 
 .timeline-step {
@@ -63,6 +130,15 @@
   align-items: flex-start;
   gap: 1.5rem;
   width: 100%;
+  transform-style: preserve-3d;
+  opacity: 0;
+  transform: translateY(24px) translateZ(-15px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out;
+}
+
+.workflow-section.is-revealed .timeline-step {
+  opacity: 1;
+  transform: translateY(0) translateZ(0);
 }
 
 @media (min-width: 1024px) {
@@ -74,25 +150,64 @@
 }
 
 .step-number {
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
   border-radius: 50%;
-  background-color: var(--bg-charcoal);
-  border: 1px solid var(--accent-cyan);
+  background-color: var(--bg-charcoal, #080b11);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
-  color: var(--accent-cyan);
-  box-shadow: 0 0 10px var(--accent-cyan-glow);
+  font-weight: 700;
+  color: var(--text-muted);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   z-index: 2;
+  transition: all 0.35s ease;
+}
+
+.timeline-step.is-active .step-number {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 14px var(--accent-cyan-glow);
+}
+
+.timeline-step.is-current .step-number {
+  background-color: var(--accent-cyan);
+  color: #040810;
+  border-color: #ffffff;
+  box-shadow: 0 0 20px var(--accent-cyan), 0 0 35px rgba(0, 229, 255, 0.6);
+  transform: scale(1.15) translateZ(10px);
+}
+
+.step-beacon-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-cyan);
+  animation: beaconPulse 2s infinite ease-out;
+  pointer-events: none;
 }
 
 .step-content {
-  padding: 1.5rem;
-  transition: transform 0.3s ease;
+  padding: 1.6rem 1.4rem;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(16, 21, 30, 0.82) 0%, rgba(10, 14, 20, 0.92) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   flex: 1;
+}
+
+.step-card-bevel {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  pointer-events: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 1024px) {
@@ -103,18 +218,43 @@
 }
 
 .step-content:hover {
-  transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-6px) translateZ(14px) scale(1.03);
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 20px rgba(0, 229, 255, 0.15);
+}
+
+.timeline-step.is-current .step-content {
+  border-color: rgba(0, 229, 255, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 18px rgba(0, 229, 255, 0.18);
+  transform: translateY(-4px) translateZ(10px);
 }
 
 .step-title {
   font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+}
+
+.timeline-step.is-current .step-title {
+  color: var(--accent-cyan);
 }
 
 .step-desc {
   font-size: 0.85rem;
   line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workflow-header,
+  .timeline-step,
+  .timeline-connector-fill {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .step-beacon-ring {
+    animation: none !important;
+  }
 }

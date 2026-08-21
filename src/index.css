@@ -39,6 +39,15 @@
   --btn-accent-hover: #1a8fff;
   --btn-accent-shadow: rgba(10, 132, 255, 0.3);
 
+  /* 3D Depth & Elevation Tokens */
+  --depth-shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --depth-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.35);
+  --depth-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.65), 0 4px 12px rgba(0, 0, 0, 0.45);
+  --depth-shadow-cyan: 0 8px 24px rgba(0, 229, 255, 0.25), 0 2px 8px rgba(0, 229, 255, 0.35);
+  --bevel-top: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --bevel-bottom: inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  --bevel-cyan: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(0, 180, 216, 0.6);
+  
   /* Typography */
   --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -324,9 +333,40 @@ code, .mono {
   transform: translateY(-1px);
 }
 
+/* 3D Depth Utilities */
+.depth-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: var(--depth-shadow-md), var(--bevel-top), var(--bevel-bottom);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease;
+  transform: translateZ(0);
+}
+
+.depth-card:hover {
+  border-color: var(--border-active);
+  box-shadow: var(--depth-shadow-lg), var(--bevel-top), var(--bevel-bottom);
+}
+
+.char-tile-3d {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  transform-style: preserve-3d;
+}
+
 @media (prefers-reduced-motion: reduce) {
   body, 
   .glass-panel, 
+  .depth-card,
+  .char-tile-3d,
   .target-document-panel, 
   .reference-manager-panel, 
   .compare-summary-bar, 
