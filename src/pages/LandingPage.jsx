@@ -17,9 +17,12 @@ export default function LandingPage() {
           <div className="footer-brand">
             STRING<span style={{color: 'var(--accent-cyan)'}}>XPERT</span>
           </div>
-          <p className="text-muted" style={{fontSize: '0.85rem', marginTop: '1rem'}}>
+          <p className="text-muted" style={{fontSize: '0.85rem', marginTop: '0.75rem'}}>
             Multi-Algorithm Text Similarity Engine
           </p>
+          <div className="footer-copyright">
+            © 2026 <span className="footer-brand-name">String<span className="text-cyan-accent">Xpert</span></span> · Built for intelligent text similarity analysis
+          </div>
         </div>
       </footer>
     </div>
